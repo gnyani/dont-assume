@@ -1,8 +1,8 @@
 # dont-assume
 
-An [Agent Skill](https://agentskills.io) that stops coding agents from treating training-data conventions as facts about *this* repo.
+An [Agent Skill](https://agentskills.io) that stops agents from treating training data, convention, or prior knowledge as observed fact.
 
-Convention is a search hint, not a location. If the agent has not observed it here, it is not true here.
+Convention is a search hint, not a fact. If the agent has not observed it, it is not true of this case.
 
 Works with Cursor, Claude Code, and any client that supports Agent Skills.
 
@@ -44,7 +44,7 @@ npx skills add gnyani/dont-assume -g -a codex -y
 
 ## Use
 
-On by default. The agent should load it at the start of any coding chat. You do not need to say anything.
+On by default. The agent should load it at the start of any chat. You do not need to say anything.
 
 Optional reminders:
 
@@ -65,15 +65,16 @@ Also works: `assume away`.
 
 ## What it does
 
-- Treats convention as a query, not a file path
-- Forces a look at the real file, symbol, route, or schema before editing
+- Treats convention as a query, not a fact
+- Forces a look before asserting or editing (the file, a fetched source, or what the user said)
 - Stops stacked guesses (the hole agents dig for themselves)
-- Asks instead of inventing a missing helper, util, or folder
-- Stays out of the way once the next edit is inside something already read
+- Asks instead of inventing the missing helper, process, or answer
+- Lets reasoning stay reasoning, not fake observation
+- Stays out of the way once the next step is inside something already seen
 
 ## Why it exists
 
-Models fill gaps with "how this kind of project usually works." That is often wrong. The first miss is cheap. The second miss, built on the first, is a hole: phantom files, phantom APIs, extra packages, and a plan that no longer matches the repo.
+Models fill gaps with "how this kind of thing usually works." That is often wrong. The first miss is cheap. The second miss, built on the first, is a hole: phantom files, phantom APIs, phantom processes, and a plan that no longer matches the case.
 
 This skill makes the agent look, name guesses out loud, and stop stacking.
 

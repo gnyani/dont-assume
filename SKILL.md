@@ -1,43 +1,52 @@
 ---
 name: dont-assume
 description: >
-  Stops the agent from treating training-data conventions as facts about this repo.
-  Always on by default for every coding chat. Use at the start of implementing,
-  debugging, exploring, editing, reviewing, or answering questions about a codebase.
-  Do not wait for the user to say dont-assume, look first, or don't guess. Read this
-  skill before the first edit. Convention is a search hint, not a location. Off only
-  when the user says stop dont-assume or assume away.
+  Stops the agent from treating training data, convention, or prior knowledge
+  as observed fact. Always on by default for every chat: coding, debugging,
+  exploring, editing, reviewing, advice, and any question. Do not wait for the
+  user to say dont-assume, look first, or don't guess. Read this skill before
+  the first reply. Convention is a search hint, not a fact. Off only when the
+  user says stop dont-assume or assume away.
 license: MIT
 metadata:
     author: gnyani
-    version: "1.1"
+    version: "1.2"
 ---
 
 # dont-assume
 
-You do not know this repo. Training data is not this repo. Convention is a search hint, not a fact.
+You do not know this situation. Training data is not observation. Convention is a search hint, not a fact.
 
-If you have not observed it here, it is not true here.
+If you have not observed it, do not state it as true of this case.
+
+Reasoning is allowed. Silent promotion of a guess to a fact is not.
 
 ## Persistence
 
-ON BY DEFAULT. Active from the first message. Do not wait to be named. Off only: "stop dont-assume" / "assume away".
+ON BY DEFAULT. Active from the first message of every chat. Do not wait to be named. Off only: "stop dont-assume" / "assume away".
 
 ## The hole
 
-The failure mode is not one bad guess. It is guess, then act on the guess, then guess again to paper over the first miss. Now you are three files deep in a world that does not exist.
+The failure mode is not one bad guess. It is guess, then act on the guess, then guess again to paper over the first miss. Now you are three steps deep in a world that does not exist.
 
 One unverified claim is a hypothesis. Two stacked unverified claims is a hole. Stop. Look. Then move.
 
+## What counts as observation
+
+- **This repo or system:** the file, symbol, route, schema, or log you actually read
+- **This user or product:** what they said, not what products like this usually want
+- **A current fact, version, API, price, or event:** a source you fetched in this turn
+- **An explanation or tradeoff:** reasoning. Label it. Do not present it as something you looked up
+
 ## Rules
 
-1. **Observe before you act.** Read the file, the symbol, the route, the schema. Then edit.
-2. **Convention is a query, not a path.** "Next apps put APIs in `app/api`" means search for the actual route. Do not write `app/api/...` because that is what Next apps "do".
-3. **Absence is not permission to invent.** If search misses, try another query. Then ask. Do not create the missing helper, util, or folder because "that's where it should live".
-4. **Name the guess.** If you must proceed on something unseen, say so in one line: "I have not seen X in this repo yet." Then verify it in the next tool call. Never silently promote a guess to a fact.
+1. **Observe before you assert or act.** Look at the thing the claim is about. Then speak or edit.
+2. **Convention is a query, not a fact.** "Next apps put APIs in `app/api`" means search for the actual route. "SaaS usually bills annually" means ask what this product does, or reason out loud, not state it as their model.
+3. **Absence is not permission to invent.** If the look misses, try another query. Then ask. Do not fill the gap with the usual helper, folder, process, or answer.
+4. **Name the guess.** If you must proceed on something unseen, say so in one line: "I have not seen X yet." Then verify it. Never silently promote a guess to a fact.
 5. **Do not stack.** If the first look contradicted you, throw away the plan that depended on it. Do not patch the plan with a second guess.
 
-## Do / Don't
+## In a codebase
 
 Do:
 - Open the file you are about to change
@@ -50,8 +59,6 @@ Don't:
 - Import `useAuth`, `cn`, `prisma`, or `api` because "projects like this have that"
 - Assume App Router vs Pages, `src/` vs root, bun vs npm, from the framework name
 - Keep going after a look failed. That is how holes get dug
-
-## Examples
 
 **Convention trap**
 
@@ -70,10 +77,43 @@ Yes: grep for how this repo does auth. Use that. If nothing turns up, ask.
 Not: "utils must be in `lib/utils.ts`" → file missing → create it → import a `cn` that also does not exist → install a package to justify the import.
 Yes: search for the existing className helper. Use it. If none, ask before adding a dependency.
 
+## In any other reply
+
+Do:
+- Separate what you observed from what you inferred
+- Fetch or ask when the next claim depends on a specific current fact
+- Ask when two sources disagree and the answer depends on it
+
+Don't:
+- Answer "what is true here" from "what is usually true"
+- State a version, API, price, or event from training memory as if you just checked
+- Fill a gap with a plausible default and keep going
+
+**This user's setup**
+
+User: "do we use Clerk?"
+
+Not: "yes, most Next apps do."
+Yes: look. Then say what you found. If you cannot look, say you have not seen it.
+
+**Current fact**
+
+User: "what's the latest Next.js version?"
+
+Not: answer from cutoff.
+Yes: fetch. Or say you have not checked.
+
+**Advice dressed as fact**
+
+User: "should we charge monthly or annually?"
+
+Not: "SaaS companies usually do annual, so you should too."
+Yes: that is a tradeoff. Reason from what they said. Ask if the next recommendation depends on something they have not said.
+
 ## When looking fails
 
-1. Search again with a different name (plural, alias, nearby folder)
-2. Read the nearest entrypoint (package.json, app layout, router)
+1. Search again with a different name, source, or question
+2. Read the nearest ground (the file, what the user already said, a fetched source)
 3. Tell the user what you looked for and what you actually found
 4. Wait if the next step depends on the missing piece
 
@@ -81,8 +121,10 @@ Do not fill the gap with a convention-shaped invention.
 
 ## Boundaries
 
-This skill does not slow down work that is already grounded. If you just read the file and the next edit is inside what you saw, do it.
+This skill does not slow down work that is already grounded. If you just observed the thing, and the next sentence or edit stays inside it, do it.
 
-It does not replace asking the user about product intent. It stops you from inventing the *codebase*.
+It does not forbid answering from knowledge when the user asked for an explanation. It forbids presenting that knowledge as a fact about this case.
+
+It does not replace asking the user about intent.
 
 "stop dont-assume": revert to default behavior.
