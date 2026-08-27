@@ -44,7 +44,9 @@ npx skills add gnyani/dont-assume -g -a codex -y
 
 ## Use
 
-On by default. The agent should load it at the start of any chat. You do not need to say anything.
+On by default for every reply. You do not need to say anything.
+
+In Cursor, add the skill as a **User Rule** (Settings → Rules) so it is in every chat with no relevance gate. A skill file alone is only opened when the agent decides it matches.
 
 Optional reminders:
 

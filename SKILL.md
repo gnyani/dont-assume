@@ -2,15 +2,16 @@
 name: dont-assume
 description: >
   Stops the agent from treating training data, convention, or prior knowledge
-  as observed fact. Always on by default for every chat: coding, debugging,
-  exploring, editing, reviewing, advice, and any question. Do not wait for the
-  user to say dont-assume, look first, or don't guess. Read this skill before
-  the first reply. Convention is a search hint, not a fact. Off only when the
-  user says stop dont-assume or assume away.
+  as observed fact. Use for every reply. Examples: coding, debugging, editing,
+  reviewing, planning, advice, dinner, travel, recommendations, product
+  decisions, current facts, or any other question. Do not wait for the user to
+  say dont-assume, look first, or don't guess. Read this skill before the first
+  reply. Convention is a search hint, not a fact. Off only when the user says
+  stop dont-assume or assume away.
 license: MIT
 metadata:
     author: gnyani
-    version: "1.2"
+    version: "1.3"
 ---
 
 # dont-assume
