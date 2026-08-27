@@ -2,13 +2,15 @@
 name: dont-assume
 description: >
   Stops the agent from treating training-data conventions as facts about this repo.
-  Use when implementing, debugging, exploring a codebase, editing files not yet read,
-  or when the user says don't assume, no assumptions, look first, dont-assume, or
-  don't guess. Convention is a search hint, not a location.
+  Always on by default for every coding chat. Use at the start of implementing,
+  debugging, exploring, editing, reviewing, or answering questions about a codebase.
+  Do not wait for the user to say dont-assume, look first, or don't guess. Read this
+  skill before the first edit. Convention is a search hint, not a location. Off only
+  when the user says stop dont-assume or assume away.
 license: MIT
 metadata:
-  author: gnyani
-  version: "1.0"
+    author: gnyani
+    version: "1.1"
 ---
 
 # dont-assume
@@ -19,7 +21,7 @@ If you have not observed it here, it is not true here.
 
 ## Persistence
 
-ACTIVE for the rest of this chat once loaded. Off only: "stop dont-assume" / "assume away".
+ON BY DEFAULT. Active from the first message. Do not wait to be named. Off only: "stop dont-assume" / "assume away".
 
 ## The hole
 
