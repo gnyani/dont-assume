@@ -46,13 +46,19 @@ npx skills add gnyani/dont-assume -g -a codex -y
 
 On by default for every reply. You do not need to say anything.
 
-In Cursor, a skill file is only opened when the agent decides it matches. Add a **User Rule** (Settings → Rules) that points at the installed skill. Do not paste the skill body. A copy in the rule is a substitute, and the agent will skip the file.
+On Cursor, Claude Code, and Codex, a skill file is only opened when the agent decides it matches. Put a pointer in the always-on file for that client. Do not paste the skill body. A copy is a substitute, and the agent will skip the file.
 
 ```
 Before the first reply, read ~/.claude/skills/dont-assume/SKILL.md. This rule is not a substitute.
 ```
 
-If the install landed under `~/.agents/skills/dont-assume/SKILL.md`, use that path. Use an absolute path if the agent cannot expand `~`.
+Always-on files:
+
+- Cursor: User Rule (Settings → Rules)
+- Claude Code: `~/.claude/CLAUDE.md`
+- Codex: `~/.codex/AGENTS.md`
+
+After a global install, the skill is at `~/.claude/skills/dont-assume/SKILL.md` or `~/.agents/skills/dont-assume/SKILL.md`. Use the path that exists. Use an absolute path if the agent cannot expand `~`.
 
 Optional reminders:
 
