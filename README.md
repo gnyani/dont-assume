@@ -46,7 +46,13 @@ npx skills add gnyani/dont-assume -g -a codex -y
 
 On by default for every reply. You do not need to say anything.
 
-In Cursor, add the skill as a **User Rule** (Settings → Rules) so it is in every chat with no relevance gate. A skill file alone is only opened when the agent decides it matches.
+In Cursor, a skill file is only opened when the agent decides it matches. Add a **User Rule** (Settings → Rules) that points at the installed skill. Do not paste the skill body. A copy in the rule is a substitute, and the agent will skip the file.
+
+```
+Before the first reply, read ~/.claude/skills/dont-assume/SKILL.md. This rule is not a substitute.
+```
+
+If the install landed under `~/.agents/skills/dont-assume/SKILL.md`, use that path. Use an absolute path if the agent cannot expand `~`.
 
 Optional reminders:
 
